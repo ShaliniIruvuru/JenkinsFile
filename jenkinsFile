@@ -13,9 +13,11 @@ pipeline {
      stage('Build docker image'){
         steps{
            script{
-               sh 'sudo groupadd docker'
-               sh 'sudo usermod -aG docker ${USER}'
-               sh 'su -s ${USER}'
+            withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
+               sh 'docker login -u devopshint -p ${dockerhubpwd}'
+                }
+
+               
               sh 'docker build -t shaliniiruvuru/jenkins_selenium .'  
                  }
               }
