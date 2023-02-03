@@ -13,10 +13,21 @@ pipeline {
      stage('Build docker image'){
         steps{
            script{
+               sh 'sudo groupadd docker'
+               sh 'sudo usermod -aG docker ${USER}'
+               sh 'su -s ${USER}'
               sh 'docker build -t shaliniiruvuru/jenkins_selenium .'  
                  }
               }
           }
+          stage('push the image to dockerhub'){
+            steps{
+             script{
+             
+                   }
+              }
+            } 
+          
   
         }
 }
