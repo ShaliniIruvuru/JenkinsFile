@@ -3,14 +3,14 @@ pipeline {
    tools {
     maven 'Maven 3.8.7'
     }
-    stages{
+    stages {
     stage('Build Maven'){
       steps{
         checkout scmGit(branches: [[name: '*/jenkins']], extensions: [], userRemoteConfigs: [[credentialsId: '0d42cebb-fada-4a71-be79-c77a3bb0ec58', url: 'https://github.com/ShaliniIruvuru/JenkinsFile.git']])
         sh "mvn -Dmaven.test.failure.ignore=true clean package"
            }
-       }
-     stage{
+      }
+     stage('Build docker image'){
         steps{
            script{
               sh 'docker build -t shaliniiruvuru/jenkins_selenium .'  
