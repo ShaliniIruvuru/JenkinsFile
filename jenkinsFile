@@ -23,6 +23,10 @@ pipeline {
           stage('push the image to dockerhub'){
             steps{
              script{
+             withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
+               sh 'docker login -u devopshint -p ${dockerhubpwd}'
+                }
+                 sh 'docker push shaliniiruvuru/jenkins_selenium'
              
                    }
               }
