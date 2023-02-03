@@ -16,7 +16,7 @@ pipeline {
               sh 'docker build -t shaliniiruvuru/jenkins_selenium .'  
                  }
               }
-     
+          }
   
         }
 }
