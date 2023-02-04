@@ -13,15 +13,19 @@ pipeline {
      stage('Build docker image'){
         steps{
            script{
-            sh 'docker build -t jenkins_selenium .'  
+            withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
+               sh 'docker login -u shaliniiruvuru -p ${dockerhubpwd}'
                  }
+                 sh 'docker build -t jenkins_selenium .'  
+
               }
+          }
           }
           stage('push the image to dockerhub'){
             steps{
              script{
              withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
-               sh 'docker login -u devopshint -p ${dockerhubpwd}'
+               sh 'docker login -u shaliniiruvuru -p ${dockerhubpwd}'
                 }
                  sh 'docker push shaliniiruvuru/jenkins_selenium'
              
