@@ -16,7 +16,7 @@ pipeline{
             steps {
                 script {
                           withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerhubpwd')]) {
-                          sh 'docker login -u shaliniiruvuru -p ${dockerhubpwd}'
+                          sh 'docker login --username  shaliniiruvuru --password-stdin ${dockerhubpwd}'
 
                         }
                   sh 'docker build -t jenkins .'
