@@ -24,10 +24,10 @@ pipeline{
             steps {
                 script {
                            withCredentials([string(credentialsId: 'dockerhub_Pwd', variable: 'dockerhubpwd')])  {
-                          sh "sudo docker login -u shaliniiruvuru -p ${dockerhubpwd}"
+                          sh "docker login -u shaliniiruvuru -p ${dockerhubpwd}"
 
                         }
-                 sh 'docker push  jenkins'
+                 sh 'docker push  jenkins:latest'
                 }
             }
         }
