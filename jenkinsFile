@@ -27,7 +27,7 @@ pipeline{
                           sh "docker login -u shaliniiruvuru -p ${dockerhubpwd}"
 
                         }
-                 sh 'docker push  jenkins:latest'
+                 sh 'docker push  shaliniiruvuru/jenkins:latest'
                 }
             }
         }
