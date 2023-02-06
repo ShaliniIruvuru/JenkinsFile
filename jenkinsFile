@@ -24,7 +24,7 @@ pipeline{
             steps {
                 script {
                            withCredentials([string(credentialsId: 'dockerhub_Pwd', variable: 'dockerhubpwd')])  {
-                          sh "docker login -u shaliniiruvuru -p ${dockerhubpwd}"
+                          sh "sudo docker login -u shaliniiruvuru -password-stdin ${dockerhubpwd}"
 
                         }
                        sh 'docker tag jenkins:latest shaliniiruvuru/jenkins:jenkins'  
