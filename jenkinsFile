@@ -28,7 +28,6 @@ pipeline{
 
                         }
                        sh 'docker tag jenkins:latest shaliniiruvuru/jenkins:jenkins'  
-                       sh 'docker push  shaliniiruvuru/jenkins:jenkins'
                 }
             }
         }
